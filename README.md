@@ -1,30 +1,35 @@
-# FunBits 官网
+# Liaotao Studio 官网
 
-FunBits 游戏与 App 展示网站，使用 HTML 和 CSS，无需构建。
+糖光、咕噜账本、战争艺术的产品官网，纯 HTML/CSS，无构建步骤，可直接由 GitHub Pages 托管。
 
 ## 页面
 
-- `index.html`：首页与产品分类。
-- `games.html`：游戏展示。
-- `apps.html`：App 展示。
-- `funbits-assets/`：样式与站点图标。
+| 路径 | 内容 |
+| --- | --- |
+| `index.html` | 首页：APPs 与游戏两个分类 |
+| `apps/tangguang/` | 糖光：产品页、`privacy.html` 隐私政策、`terms.html` 用户协议 |
+| `apps/gulu/` | 咕噜账本：同上 |
+| `games/artofwar/` | 战争艺术：同上 |
+| `assets/` | 样式与图片 |
 
-产品卡片中的名称与介绍为展示样例。
+提交 App Store 时可填写的地址（以默认 Pages 地址为例）：
+
+- 隐私政策：`https://mokanus.github.io/site/apps/<产品>/privacy.html`
+- 用户协议（自定义 EULA）：`https://mokanus.github.io/site/apps/<产品>/terms.html`
+- 技术支持：`https://mokanus.github.io/site/apps/<产品>/#support`
+
+## 待填写
+
+全站搜索 `待填写` 即可找到占位内容（页面上以黄色高亮显示），目前只有联系邮箱一处。
 
 ## 本地预览
 
-直接打开 `index.html`，或在仓库目录运行：
-
 ```sh
-python3 -m http.server 8765 --bind 127.0.0.1
+python3 -m http.server 8765
 ```
 
-访问 http://127.0.0.1:8765/。
+访问 http://127.0.0.1:8765/ 。
 
-## GitHub Pages
+## 发布
 
-在仓库 Settings → Pages 中，将 Source 设为 Deploy from a branch，选择 `develop` 分支和 `/(root)` 目录后保存。`.nojekyll` 使页面按静态文件发布。
-
-默认访问地址：https://mokanus.github.io/site/
-
-修改页面后提交并推送到 `develop`，GitHub Pages 会自动更新网站。
+在仓库 Settings → Pages 中选择 Deploy from a branch，分支选 `develop`、目录选 `/(root)`。`.nojekyll` 让页面按原样发布。
