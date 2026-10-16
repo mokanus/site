@@ -1,4 +1,4 @@
-# Liaotao Studio 官网
+# 咕噜研习社官网
 
 糖光、咕噜账本、战争艺术的产品官网，纯 HTML/CSS，无构建步骤，可直接由 GitHub Pages 托管。
 
@@ -17,10 +17,6 @@
 - 隐私政策：`https://mokanus.github.io/site/apps/<产品>/privacy.html`
 - 用户协议（自定义 EULA）：`https://mokanus.github.io/site/apps/<产品>/terms.html`
 - 技术支持：`https://mokanus.github.io/site/apps/<产品>/#support`
-
-## 待填写
-
-全站搜索 `待填写` 即可找到占位内容（页面上以黄色高亮显示），目前只有联系邮箱一处。
 
 ## 本地预览
 
