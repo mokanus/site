@@ -459,3 +459,38 @@ td{color:var(--ink-2)}
   .show-war .shot{padding:0 18px 24px}
 }
 .war-hero .wrap{width:100%}
+
+/* ---------- 鹈鹕壁纸（Mac） ---------- */
+.show-pelican{background:radial-gradient(90% 80% at 80% 20%,#FFF8E6 0%,#E4EFDF 55%,#BFD8C6 100%);color:#253830}
+.show-pelican .ring{background:radial-gradient(closest-side,rgba(255,236,190,.95),rgba(255,236,190,0));animation:glow 6s ease-in-out infinite}
+.t-pelican{--bg:#F8F7F0;--bg-2:#EAF1E8;--line:#DCE5D6;--ink:#253830;--ink-2:#5C6E64;--ink-3:#93A399}
+.t-pelican .p-hero{background:radial-gradient(55% 60% at 80% 42%,#F8DDB0 0%,rgba(248,221,176,0) 70%),radial-gradient(60% 50% at 10% 95%,#CDE5D6 0%,transparent 70%),linear-gradient(180deg,#EEF4EE 0%,var(--bg) 70%)}
+.t-pelican .p-hero .wrap{grid-template-columns:.9fr 1.1fr}
+.t-pelican .stat b,.t-pelican .step .n{color:#3F6B52}
+.t-pelican .price .card.hot{background:linear-gradient(160deg,#6E9C7E,#3F6B52);box-shadow:0 20px 50px rgba(63,107,82,.3)}
+.t-pelican .promise{background:#253830}
+.t-pelican .promise .btn.primary{color:#253830}
+.sun{position:absolute;width:300px;height:300px;border-radius:50%;right:8%;top:14%;z-index:-1;background:radial-gradient(closest-side,#FBE7B5,#F6C77C 60%,rgba(246,199,124,0));opacity:.75;animation:glow 8s ease-in-out infinite}
+.hills{position:absolute;left:0;right:0;bottom:0;height:34%;z-index:-1;pointer-events:none;background:radial-gradient(70% 90% at 15% 100%,#9CBFA6 0 60%,transparent 61%),radial-gradient(60% 80% at 80% 105%,#7FA88C 0 60%,transparent 61%);opacity:.35}
+.mac{position:relative;width:var(--w,640px);max-width:100%;flex:none}
+.mac .scr{position:relative;aspect-ratio:16/10;border-radius:calc(var(--w,640px)*.028);padding:calc(var(--w,640px)*.016);background:linear-gradient(160deg,#30343A,#16181B);box-shadow:inset 0 0 0 1.5px #4B5058,0 30px 70px rgba(37,56,48,.28),0 8px 20px rgba(37,56,48,.14)}
+.mac .scr img{width:100%;height:100%;object-fit:cover;border-radius:calc(var(--w,640px)*.012);background:#cfd8cf}
+.mac .scr .swap{position:absolute;left:calc(var(--w,640px)*.016);top:calc(var(--w,640px)*.016);width:calc(100% - var(--w,640px)*.032);height:calc(100% - var(--w,640px)*.032);opacity:0;transition:opacity .8s}
+.mac .scr .swap.on{opacity:1}
+.mac .base{height:calc(var(--w,640px)*.03);margin:0 -5%;border-radius:0 0 calc(var(--w,640px)*.04) calc(var(--w,640px)*.04);background:linear-gradient(180deg,#D9DDE0,#AEB4B9);box-shadow:0 14px 26px rgba(37,56,48,.2)}
+.mac .base:before{content:"";display:block;width:16%;height:40%;margin:0 auto;border-radius:0 0 10px 10px;background:#9CA3A9}
+.gallery figure .mac{--w:520px;transition:transform .5s var(--ease)}
+.gallery figure:hover .mac{transform:translateY(-10px)}
+.gallery figure .mac + figcaption small{max-width:420px}
+.scenes{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.scene{background:var(--surface);border:1.5px solid var(--line);border-radius:24px;padding:24px;transition:transform .35s var(--ease),box-shadow .35s}
+.scene:hover{transform:translateY(-6px) rotate(-.5deg);box-shadow:var(--shadow)}
+.scene .em{font-size:34px;line-height:1;display:inline-block;transition:transform .5s var(--ease)}
+.scene:hover .em{transform:scale(1.18) rotate(-8deg)}
+.scene b{display:block;font-family:var(--display);font-weight:400;font-size:21px;margin:14px 0 4px}
+.scene p{margin:0;color:var(--ink-2);font-size:14px}
+.scene.more{background:var(--bg-2);border-style:dashed}
+.daylight{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+.daylight .skin i{background:var(--c)}
+@media (max-width:980px){.scenes{grid-template-columns:1fr 1fr}.t-pelican .p-hero .wrap{grid-template-columns:1fr}.gallery figure .mac{--w:440px}}
+@media (max-width:600px){.scenes{grid-template-columns:1fr}.gallery figure .mac{--w:300px}.sun{width:200px;height:200px}}
