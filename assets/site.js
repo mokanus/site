@@ -1,4 +1,4 @@
-// 咕噜研习社官网 · 交互与动效（无依赖）
+// 咕噜公社官网 · 交互与动效（无依赖）
 (() => {
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
