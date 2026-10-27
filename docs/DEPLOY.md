@@ -1,18 +1,11 @@
 # 官网更新与部署流程
 
-官网有两个发布目标，互不影响：
-
-| 目标 | 地址 | 怎么更新 |
-| --- | --- | --- |
-| GitHub Pages | `https://mokanus.github.io/site/` | 合并到 `develop` 后自动发布 |
-| 自有服务器（主站） | `https://www.funbits.cn/` | **手动**执行 `scripts/deploy-funbits.sh deploy` |
-
-GitHub Pages 的自动发布管不到 funbits.cn 那台服务器。App Store 里填的隐私政策、用户协议地址在 www.funbits.cn 上，所以每次官网合并了改动，都要按下面的流程再部署一次。
+官网只发布到自有服务器 https://www.funbits.cn/，不再使用 GitHub Pages。合并到 `develop` 不会自动上线，每次都要按下面的流程手动部署一次。App Store 里填的隐私政策、用户协议地址都在 www.funbits.cn 上。
 
 ## 一次更新的完整流程
 
 1. 在功能分支上改页面，本地用 `python3 -m http.server 8765` 预览。改了 `site.css` / `site.js` 的话，记得把所有页面里的 `?v=` 版本号加一。
-2. 提 PR 合并到 `develop`，GitHub Pages 会自动更新。
+2. 提 PR 合并到 `develop`。
 3. 在本地切到最新的 `develop`，部署到 funbits.cn：
 
    ```sh

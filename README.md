@@ -1,6 +1,6 @@
 # 咕噜研习社官网
 
-糖光、咕噜账本、鹈鹕壁纸、战争艺术的产品官网，纯 HTML/CSS/JS，无构建步骤，可直接由 GitHub Pages 托管。
+糖光、咕噜账本、鹈鹕壁纸、战争艺术的产品官网，纯 HTML/CSS/JS，无构建步骤，部署在自有服务器 https://www.funbits.cn 上。
 
 ## 页面
 
@@ -13,11 +13,11 @@
 | `games/artofwar/` | 战争艺术：同上 |
 | `assets/` | 样式 `site.css`、交互动效 `site.js`、字体与图片 |
 
-提交 App Store 时可填写的地址（以默认 Pages 地址为例）：
+提交 App Store 时可填写的地址（战争艺术把路径里的 `apps` 换成 `games`）：
 
-- 隐私政策：`https://mokanus.github.io/site/apps/<产品>/privacy.html`
-- 用户协议（自定义 EULA）：`https://mokanus.github.io/site/apps/<产品>/terms.html`
-- 技术支持：`https://mokanus.github.io/site/apps/<产品>/#support`
+- 隐私政策：`https://www.funbits.cn/apps/<产品>/privacy.html`
+- 用户协议（自定义 EULA）：`https://www.funbits.cn/apps/<产品>/terms.html`
+- 技术支持：`https://www.funbits.cn/apps/<产品>/#support`
 
 ## 本地预览
 
@@ -29,13 +29,11 @@ python3 -m http.server 8765
 
 ## 发布
 
-在仓库 Settings → Pages 中选择 Deploy from a branch，分支选 `develop`、目录选 `/(root)`。`.nojekyll` 让页面按原样发布。
-
-主站 https://www.funbits.cn 在自有服务器上，不会随 GitHub Pages 自动更新。合并到 `develop` 后要再执行 `scripts/deploy-funbits.sh deploy`，完整流程和回滚方法见 [docs/DEPLOY.md](docs/DEPLOY.md)。
+官网只发布到 https://www.funbits.cn，不再使用 GitHub Pages。改动合并到 `develop` 后执行 `scripts/deploy-funbits.sh deploy` 上线，完整流程和回滚方法见 [docs/DEPLOY.md](docs/DEPLOY.md)。
 
 ## 缓存
 
-GitHub Pages 会让浏览器缓存页面最多 10 分钟。页面里的 `site.css?v=3`、`site.js?v=3` 是版本号，改了样式或脚本后把所有页面里的版本号加一，访客就会拿到新文件。
+页面里的 `site.css?v=3`、`site.js?v=3` 是版本号，改了样式或脚本后把所有页面里的版本号加一，访客就会拿到新文件。
 
 ## 图片来源
 
