@@ -31,6 +31,8 @@ python3 -m http.server 8765
 
 在仓库 Settings → Pages 中选择 Deploy from a branch，分支选 `develop`、目录选 `/(root)`。`.nojekyll` 让页面按原样发布。
 
+主站 https://www.funbits.cn 在自有服务器上，不会随 GitHub Pages 自动更新。合并到 `develop` 后要再执行 `scripts/deploy-funbits.sh deploy`，完整流程和回滚方法见 [docs/DEPLOY.md](docs/DEPLOY.md)。
+
 ## 缓存
 
 GitHub Pages 会让浏览器缓存页面最多 10 分钟。页面里的 `site.css?v=3`、`site.js?v=3` 是版本号，改了样式或脚本后把所有页面里的版本号加一，访客就会拿到新文件。
