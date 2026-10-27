@@ -38,3 +38,12 @@ python3 -m http.server 8765
 ## 图片来源
 
 产品截图来自各产品仓库里的交互原型（咕噜账本 `index.html`、糖光 `prototype.html`），鹈鹕壁纸的截图是 Mac 上实拍的 App Store 截图（2880×1800）缩到 1600 宽的 webp，图标来自 pelican-wallpaper 仓库的 `packaging/Assets.xcassets`；战争艺术的画面、头像和单位图标来自 ArtOfWar 仓库的 `godot/docs/design` 与 `art/` 目录。
+
+## 品牌形象
+
+Logo 和网站图标来自咕噜品牌素材包（规范见 [assets/img/brand/BRAND.md](assets/img/brand/BRAND.md)，SVG 源文件也在 `assets/img/brand/`）：
+
+- `assets/img/mark.svg`：主标，端坐的咕噜，用于顶栏和页脚（48px 左右及以上）
+- `assets/img/mark-small.svg`、`favicon-32.png`、`favicon.ico`：小头像，32px 以下只留头
+- `apple-touch-icon.png`、`icon-192.png`、`icon-512.png`：米白主题的探头图标 `app-icon-ivory.svg`；`icon-maskable-512.png` 是主标居中放在米白底上，适配安卓圆形遮罩
+- 表情 `face-*.svg` 和姿态 `pose-*.svg` 用于插画位和空状态，同一屏最多出现一只咕噜。漫画里的“咕噜”是没有五官的声骸，和这只猫是两个角色，不要混用
