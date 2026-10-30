@@ -1,0 +1,30 @@
+{
+  "name": "gulu-cheer",
+  "description": "人形咕噜（牛皮纸剪纸风）比耶动画时间轴。intro 播一次，loop 循环。frame 对应 cheer-<frame>.webp/png。transform 关键帧为相对值：scale 倍数、translateY 为画布高度百分比、rotate 为角度；原点在画面底部中点上方 8%（x=50%, y=92%）。",
+  "frames": {
+    "0": "待机：抱书、半眯眼、浅 ω 嘴",
+    "1": "双手比耶：睁大眼、张嘴笑、腮红",
+    "2": "眨右眼 + ω 笑（只改脸）",
+    "3": "眯成 ^ ^ 大笑（只改脸）"
+  },
+  "assets": "https://www.funbits.cn/assets/img/brand/character/kraft/cheer/",
+  "intro": [
+    { "frame": 0, "ms": 700, "fx": "breathe" },
+    { "frame": 1, "ms": 900, "fx": "pop", "sparkles": true }
+  ],
+  "loop": [
+    { "frame": 2, "ms": 420, "fx": "tilt" },
+    { "frame": 1, "ms": 700 },
+    { "frame": 3, "ms": 760, "fx": "hop" },
+    { "frame": 1, "ms": 1600 }
+  ],
+  "fx": {
+    "breathe": { "duration": 1400, "repeat": true, "keys": [[0, {"sx": 1, "sy": 1}], [0.5, {"sx": 1.012, "sy": 0.992}], [1, {"sx": 1, "sy": 1}]] },
+    "pop": { "duration": 620, "easing": "cubic-bezier(.3,1.6,.5,1)", "keys": [[0, {"sx": 0.9, "sy": 1.06, "ty": 3}], [0.45, {"sx": 1.06, "sy": 0.95, "ty": -3}], [0.75, {"sx": 0.98, "sy": 1.02}], [1, {}]] },
+    "tilt": { "duration": 420, "easing": "ease-out", "keys": [[0, {}], [0.4, {"rot": -3, "ty": -1}], [1, {}]] },
+    "hop": { "duration": 760, "easing": "cubic-bezier(.3,1.4,.5,1)", "keys": [[0, {}], [0.3, {"ty": -4, "sx": 1.02, "sy": 0.98}], [0.6, {"sx": 1.03, "sy": 0.97}], [0.8, {"ty": -1.5}], [1, {}]] },
+    "idle": { "duration": 3200, "repeat": true, "keys": [[0, {}], [0.25, {"rot": 1}], [0.75, {"rot": -1}], [1, {}]] }
+  },
+  "sparkles": "比耶瞬间从人物两侧向外飘出 5 枚毛毡小装饰（金星 #D6B06A、珊瑚爱心 #EC8E74、暖橙水滴 #ECAD5A），0.9s 淡出，错开 0–150ms",
+  "reducedMotion": "系统开启减少动态效果时直接静态显示 frame 1，不做任何位移"
+}

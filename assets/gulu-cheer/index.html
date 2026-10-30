@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>咕噜比耶动画</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FFF9F3">
+<link rel="icon" href="../img/favicon-32.png" type="image/png" sizes="32x32">
+<script src="gulu-cheer.js" defer></script>
+<style>
+  :root{--bg:#FFF9F3;--ink:#3A2430;--ink-2:#7A6370;--line:#F0E2D6;--teal:#4A807E;--gold:#D6B06A}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
+  main{max-width:880px;margin:0 auto;padding:48px 16px 80px}
+  h1{font-size:28px;margin:0 0 6px}
+  p{color:var(--ink-2);margin:0 0 24px}
+  .row{display:flex;flex-wrap:wrap;gap:24px;align-items:flex-start}
+  .card{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;flex:1 1 300px;text-align:center}
+  .vip{background:linear-gradient(180deg,#FFF3E2,#fff 60%)}
+  .vip h2{margin:4px 0 2px;font-size:22px}
+  .vip small{color:var(--ink-2)}
+  .vip button{margin-top:16px;width:100%;border:0;border-radius:999px;padding:14px;font:600 17px/1 inherit;background:var(--teal);color:#fff;cursor:pointer}
+  .frames{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+  .frames figure{margin:0;background:repeating-conic-gradient(#f3ece4 0 25%,#fff 0 50%) 0 0/16px 16px;border-radius:12px;padding:4px}
+  .frames img{width:100%;display:block}
+  .frames figcaption{font-size:12px;color:var(--ink-2);padding:4px 0}
+  pre{background:#2A2622;color:#F3DC9A;border-radius:16px;padding:16px;overflow:auto;font-size:13px;text-align:left}
+  .ghost{margin-top:10px;background:none;border:1px solid var(--line);border-radius:999px;padding:6px 16px;cursor:pointer;color:var(--ink-2)}
+</style>
+</head>
+<body>
+<main>
+  <h1>咕噜比耶动画</h1>
+  <p>人形咕噜（牛皮纸剪纸风）开会员时的庆祝动画：抱书待机 → 双手比耶弹出 + 毛毡小星星 → 眨眼 → 大笑，循环。其他项目直接引用本站脚本或帧图即可。</p>
+
+  <div class="row">
+    <section class="card vip">
+      <gulu-cheer id="demo" size="220"></gulu-cheer>
+      <h2>欢迎成为会员</h2>
+      <small>咕噜先替你把好东西都打开了</small>
+      <button type="button">开始使用</button>
+      <button class="ghost" type="button" onclick="document.getElementById('demo').play()">再播一次</button>
+    </section>
+    <section class="card">
+      <gulu-cheer size="140" trigger="click"></gulu-cheer>
+      <p style="margin:8px 0 0">trigger="click"：点一下才播</p>
+      <gulu-cheer size="140" once></gulu-cheer>
+      <p style="margin:8px 0 0">once：播完停在比耶</p>
+    </section>
+  </div>
+
+  <h2 style="font-size:20px;margin:40px 0 4px">关键帧</h2>
+  <div class="frames">
+    <figure><img src="../img/brand/character/kraft/cheer/cheer-0.webp" alt="待机抱书"><figcaption>0 待机</figcaption></figure>
+    <figure><img src="../img/brand/character/kraft/cheer/cheer-1.webp" alt="双手比耶"><figcaption>1 比耶</figcaption></figure>
+    <figure><img src="../img/brand/character/kraft/cheer/cheer-2.webp" alt="眨眼"><figcaption>2 眨眼</figcaption></figure>
+    <figure><img src="../img/brand/character/kraft/cheer/cheer-3.webp" alt="大笑"><figcaption>3 大笑</figcaption></figure>
+  </div>
+
+  <h2 style="font-size:20px;margin:40px 0 8px">在别的网页里用</h2>
+<pre>&lt;script src="https://www.funbits.cn/assets/gulu-cheer/gulu-cheer.js" defer&gt;&lt;/script&gt;
+&lt;gulu-cheer size="220"&gt;&lt;/gulu-cheer&gt;</pre>
+  <p style="margin-top:12px">App 原生实现按 <a href="timeline.json">timeline.json</a> 的时间轴和形变复刻，帧图用 <code>assets/img/brand/character/kraft/cheer/</code> 下的 PNG（1024）或 WebP（512）。</p>
+</main>
+</body>
+</html>
