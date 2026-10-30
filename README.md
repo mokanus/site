@@ -33,7 +33,7 @@ python3 -m http.server 8765
 
 ## 缓存
 
-页面里的 `site.css?v=3`、`site.js?v=3` 是版本号，改了样式或脚本后把所有页面里的版本号加一，访客就会拿到新文件。
+页面里的 `site.css?v=6`、`site.js?v=4` 是版本号，改了样式或脚本后把所有页面里的版本号加一，访客就会拿到新文件。
 
 ## 图片来源
 
@@ -47,3 +47,14 @@ Logo 和网站图标来自咕噜品牌素材包（规范见 [assets/img/brand/BR
 - `assets/img/mark-small.svg`、`favicon-32.png`、`favicon.ico`：小头像，32px 以下只留头
 - `apple-touch-icon.png`、`icon-192.png`、`icon-512.png`：米白主题的探头图标 `app-icon-ivory.svg`；`icon-maskable-512.png` 是主标居中放在米白底上，适配安卓圆形遮罩
 - 表情 `face-*.svg` 和姿态 `pose-*.svg` 用于插画位和空状态，同一屏最多出现一只咕噜。漫画里的“咕噜”是没有五官的声骸，和这只猫是两个角色，不要混用
+
+## 牛皮纸视觉（2026-10 改版）
+
+全站用牛皮纸 + 毛毡剪纸风：底色是牛皮纸（`--kraft`），内容贴在米白卡纸上（`--paper`），强调色取自咕噜频道头像（青绿毛毡 `--felt`、橙、珊瑚、金）。纸纹是 `assets/img/kraft/grain.webp`，一张程序生成的无缝纤维纹理，用 `background-blend-mode:soft-light` 叠在任意底色上。
+
+角色插画在 `assets/img/kraft/`，都是透明底的牛皮纸剪纸版（原图在分支 `claude/kraft-cutouts` 的 `assets/img/kraft/src/`）：
+
+- 人形咕噜：`girl-stand`（首页首屏）、`girl-read`（产品页隐私承诺卡上）、`girl-wave`（备用）
+- 小猫咕噜：`cat-sit`（首页关于区）、`cat-peek`（产品页功能卡、法律文档顶部探头）、`cat-sleep`（所有页面页脚上沿）
+
+人形设定见 `assets/img/brand/character/CHARACTER.md`。全站只用牛皮纸这一种画风，同一屏最多一只猫。

@@ -306,7 +306,6 @@ main{overflow-x:clip}
 .t-tang{--disc:var(--coral)}
 .t-tang .p-hero:after{content:"";position:absolute;width:640px;height:640px;right:2%;top:50%;margin-top:-320px;border-radius:50%;background:radial-gradient(closest-side,var(--glow,#FF7A93),transparent);opacity:.45;filter:blur(30px);transition:background 1s;z-index:-2}
 .tang-visual .halo{position:absolute;width:520px;height:520px;border-radius:50%;background:radial-gradient(closest-side,var(--glow,#FF7A93),transparent);opacity:.65;filter:blur(20px);transition:background 1s;animation:glow 5s ease-in-out infinite}
-.t-tang .p-hero .visual:before{display:none}
 .modes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center}
 .modes figure{margin:0}
 .modes .phone{--w:240px;margin:0 auto;transition:transform .5s var(--ease)}
@@ -578,3 +577,20 @@ td{color:var(--ink-2)}
 .daylight .skin i{background:var(--c)}
 @media (max-width:980px){.scenes{grid-template-columns:1fr 1fr}.t-pelican .p-hero .wrap{grid-template-columns:1fr}.gallery figure .mac{--w:440px}}
 @media (max-width:600px){.scenes{grid-template-columns:1fr}.gallery figure .mac{--w:300px}.sun{width:180px;height:180px}}
+
+/* ---------- 角色点缀（牛皮纸剪纸版，同一屏只放一只猫） ---------- */
+.peek-row{position:relative;height:0}
+.peek{position:absolute;right:9%;bottom:-14px;width:170px;height:auto;z-index:0;pointer-events:none;filter:drop-shadow(0 8px 10px rgba(60,30,10,.25))}
+.features{position:relative;z-index:1}
+.promise{margin-top:120px}
+.promise-girl{position:absolute;right:56px;top:-158px;width:220px;height:auto;pointer-events:none;filter:drop-shadow(0 3px 0 rgba(0,0,0,.12)) drop-shadow(0 12px 12px rgba(40,20,5,.35))}
+.promise .btns{z-index:1}
+.doc-peek{position:absolute;right:9%;top:-102px;width:150px;height:auto;z-index:-1;pointer-events:none;filter:drop-shadow(0 6px 8px rgba(60,30,10,.25))}
+.doc article:after{display:none}
+@media (max-width:600px){
+  .peek{width:120px;bottom:-10px}
+  .promise{margin-top:110px}
+  .promise-girl{width:160px;right:20px;top:-118px}
+  .doc-peek{width:110px;top:-75px}
+}
+.promise .btn:not(.primary),.show-war .btn:not(.primary),.dark .btn:not(.primary){background-image:none}
