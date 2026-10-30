@@ -43,9 +43,10 @@ python3 -m http.server 8765
 
 Logo 和网站图标来自咕噜品牌素材包（规范见 [assets/img/brand/BRAND.md](assets/img/brand/BRAND.md)，SVG 源文件也在 `assets/img/brand/`）：
 
-- `assets/img/mark.svg`：主标，端坐的咕噜，用于顶栏和页脚（48px 左右及以上）
-- `assets/img/mark-small.svg`、`favicon-32.png`、`favicon.ico`：小头像，32px 以下只留头
-- `apple-touch-icon.png`、`icon-192.png`、`icon-512.png`：米白主题的探头图标 `app-icon-ivory.svg`；`icon-maskable-512.png` 是主标居中放在米白底上，适配安卓圆形遮罩
+- `assets/img/logo-kraft-192.png`（原图 `logo-kraft.png`）：现用主标，青绿毛毡圆片上端坐的牛皮纸小猫，用于顶栏和页脚
+- `favicon-32.png`、`favicon.ico`：同一只猫只留头，32px 以下用
+- `assets/img/mark.svg`、`mark-small.svg`：旧版矢量主标，页面上已不再使用
+- `apple-touch-icon.png`、`icon-192.png`、`icon-512.png`：牛皮纸底上放主标；`icon-maskable-512.png` 的圆片缩小留出安全区，适配安卓圆形遮罩
 - 表情 `face-*.svg` 和姿态 `pose-*.svg` 用于插画位和空状态，同一屏最多出现一只咕噜。漫画里的“咕噜”是没有五官的声骸，和这只猫是两个角色，不要混用
 
 ## 牛皮纸视觉（2026-10 改版）

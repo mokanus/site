@@ -59,7 +59,7 @@ main{overflow-x:clip}
 .top.scrolled:after{content:"";position:absolute;left:0;right:0;bottom:5px;border-top:2px dashed rgba(74,48,26,.28)}
 .top .wrap{height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}
 .brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-size:22px}
-.brand img{width:44px;height:44px;padding:3px;border-radius:50%;background:var(--paper);box-shadow:0 2px 0 rgba(90,55,25,.18),0 6px 12px -4px rgba(90,55,25,.4);transition:transform .5s var(--ease)}
+.brand img{width:46px;height:46px;border-radius:50%;box-shadow:0 2px 0 rgba(90,55,25,.18),0 6px 12px -4px rgba(90,55,25,.4);transition:transform .5s var(--ease)}
 .brand:hover img{transform:translateY(-2px) rotate(-6deg)}
 .nav{display:flex;gap:4px;align-items:center}
 .nav a{text-decoration:none;font-size:15px;color:var(--ink-2);padding:7px 14px;border-radius:999px;transition:background .2s,color .2s,transform .2s}
@@ -468,7 +468,7 @@ td{color:var(--ink-2)}
 .foot .cols{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:24px}
 .foot b{display:block;color:var(--ink);margin-bottom:10px;font-size:15px}
 .foot .brandline{font-family:var(--display);font-size:26px;color:var(--ink);display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.foot .brandline img{width:52px;height:52px;padding:3px;border-radius:50%;background:var(--paper)}
+.foot .brandline img{width:52px;height:52px;border-radius:50%;box-shadow:0 2px 0 rgba(90,55,25,.18),0 6px 12px -4px rgba(90,55,25,.4)}
 .foot a{display:block;text-decoration:none;color:var(--ink-2);padding:3px 0;transition:color .2s,transform .2s}
 .foot a:hover{color:var(--ink);transform:translateX(3px)}
 .foot .copy{margin-top:40px;padding-top:22px;border-top:2px dashed rgba(74,48,26,.22);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
@@ -477,7 +477,6 @@ td{color:var(--ink-2)}
 .foot .copy .beian:hover{transform:none;text-decoration:underline}
 .dark .foot{background-color:#101213;box-shadow:inset 0 1px 0 rgba(95,224,207,.15)}
 .dark .foot:before,.dark .foot .copy{border-color:rgba(95,224,207,.18)}
-.dark .foot .brandline img{background:#E9DFCB}
 
 /* ---------- 响应式 ---------- */
 @media (max-width:980px){
