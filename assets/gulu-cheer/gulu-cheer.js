@@ -1,5 +1,5 @@
 // 咕噜比耶动画 <gulu-cheer>（无依赖，可跨项目引用）
-// 用法：<script src="https://www.funbits.cn/assets/gulu-cheer/gulu-cheer.js" defer></script>
+// 用法：<script src="https://www.funbits.cn/assets/gulu-cheer/gulu-cheer.js" defer> 再放 <gulu-cheer>（注释里不写闭合 script 标签，方便内联）
 //       <gulu-cheer size="220"></gulu-cheer>
 // 属性：size 边长 px（默认 200）；trigger = auto | visible | click | manual（默认 visible）；
 //       once 只播一遍后停在比耶；src 帧图目录（默认与本脚本同站的 kraft/cheer/）
