@@ -1,7 +1,8 @@
 // 咕噜比耶动画 <gulu-cheer>（无依赖，可跨项目引用）
 // 用法：<script src="https://www.funbits.cn/assets/gulu-cheer/gulu-cheer.js" defer> 再放 <gulu-cheer>（注释里不写闭合 script 标签，方便内联）
 //       <gulu-cheer size="220"></gulu-cheer>
-// 属性：size 边长 px（默认 200）；trigger = auto | visible | click | manual（默认 visible）；
+// 属性：mode = breathe（默认，只显示比耶一帧 + 轻轻呼吸）| full（抱书→比耶→眨眼/大笑循环）；
+//       size 边长 px（默认 200）；trigger = auto | visible | click | manual（默认 visible）；
 //       once 只播一遍后停在比耶；src 帧图目录（默认与本脚本同站的 kraft/cheer/）
 // 方法：el.play() 重新播放；el.stop() 停在比耶帧。事件：gulu-cheer:peace（比耶出现的瞬间）
 (() => {
@@ -33,6 +34,8 @@ img.on{opacity:1}
 .stage.tilt{animation:tilt .42s ease-out both}
 .stage.hop{animation:hop .76s cubic-bezier(.3,1.4,.5,1) both}
 .stage.idle{animation:sway 3.2s ease-in-out infinite}
+.stage.calm{animation:calm 3.6s ease-in-out infinite}
+@keyframes calm{50%{transform:translateY(-.6%) scale(1.012,1.018)}}
 @keyframes breathe{50%{transform:scale(1.012,.992)}}
 @keyframes pop{0%{transform:scale(.9,1.06) translateY(3%)}45%{transform:scale(1.06,.95) translateY(-3%)}75%{transform:scale(.98,1.02)}100%{transform:none}}
 @keyframes tilt{40%{transform:rotate(-3deg) translateY(-1%)}100%{transform:none}}
@@ -84,6 +87,7 @@ img.on{opacity:1}
       if (!this.hasAttribute('role')) this.setAttribute('role', 'img');
       if (!this.hasAttribute('aria-label')) this.setAttribute('aria-label', '咕噜双手比耶');
       this.render();
+      if (this.calm()) return;
       const trigger = this.getAttribute('trigger') || 'visible';
       if (trigger === 'click') {
         this.show(0);
@@ -137,7 +141,18 @@ img.on{opacity:1}
       this.sparks.forEach(s => { s.classList.remove('go'); void s.offsetWidth; s.classList.add('go'); });
     }
 
+    // 默认模式：只放比耶这一帧，轻轻呼吸
+    calm() {
+      if ((this.getAttribute('mode') || 'breathe') === 'full') return false;
+      clearTimeout(this.timer);
+      this.frame = 1;
+      this.imgs.forEach((img, i) => img.classList.toggle('on', i === 1));
+      this.stage.className = reduce() ? 'stage' : 'stage calm';
+      return true;
+    }
+
     play() {
+      if (this.calm()) return;
       clearTimeout(this.timer);
       if (reduce()) { this.show(1); this.stage.className = 'stage'; return; }
       const once = this.hasAttribute('once');
