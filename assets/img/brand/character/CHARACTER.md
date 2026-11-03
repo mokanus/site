@@ -90,6 +90,7 @@
 - `gulu-expressions.png`：6 表情头像表（2×3）
 - `gulu-character-sheet.png`：合成设定稿（立绘 + 三视图 + 表情 + 配色色块 + 关键特征注释）
 - `kraft/gulu-kraft-front.png`、`kraft/gulu-kraft-bust.png`：彩色牛皮纸剪纸风版本（全身 + 头像式半身）
+- `kraft/avatar/avatar-human-kraft-{calm,curious,purr}.png`：人形牛皮纸频道头像三版（淡定 / 好奇 / 咕噜，1024×1024，主体在内切圆内可直接裁圆）。2026-11-03 用户定稿用**好奇** `avatar-human-kraft-curious.png` 作频道头像，另两张备用保留
 - `chibi/gulu-chibi-front.png`、`chibi/gulu-chibi-poses.png`：Q 版（2.5 头身，正面 + 看书 / 探头 / 团睡 / 打招呼四姿态），Q 版规范：头大约占全身 40%，猫耳、尾巴、吊牌按比例放大
 - 三种正式画风（2026-10-29 用户定稿，作为后续产品、视频的主角设计）：日系上色原版（主设定、正式宣传）、牛皮纸剪纸版（与频道头像同风格的封面 / 头像 / 温暖场景）、Q 版（贴纸、表情包、界面小插画）。按场景选一种，同一画面不混用
 - `CHARACTER.md`：本文件（源文件与生成记录在本地 gulu-brand-kit/character/）

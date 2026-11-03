@@ -47,6 +47,7 @@ Logo 和网站图标来自咕噜品牌素材包（规范见 [assets/img/brand/BR
 - `favicon-32.png`、`favicon.ico`：同一只猫只留头，32px 以下用
 - `assets/img/mark.svg`、`mark-small.svg`：旧版矢量主标，页面上已不再使用
 - `apple-touch-icon.png`、`icon-192.png`、`icon-512.png`：牛皮纸底上放主标；`icon-maskable-512.png` 的圆片缩小留出安全区，适配安卓圆形遮罩
+- 人形咕噜频道头像（内部素材，网站页面不用）：`assets/img/brand/character/kraft/avatar/avatar-human-kraft-curious.png`（“好奇”版，2026-11-03 定稿），1024×1024，牛皮纸毛毡剪纸风，主体在内切圆内可直接裁圆。同目录的 `-calm`（淡定）、`-purr`（咕噜）两版备用。视频、封面等流程要用咕噜头像时以这张为准，角色设定见 [CHARACTER.md](assets/img/brand/character/CHARACTER.md)
 - 表情 `face-*.svg` 和姿态 `pose-*.svg` 用于插画位和空状态，同一屏最多出现一只咕噜。漫画里的“咕噜”是没有五官的声骸，和这只猫是两个角色，不要混用
 
 ## 牛皮纸视觉（2026-10 改版）
