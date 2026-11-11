@@ -1,12 +1,12 @@
 # 官网更新与部署流程
 
-官网只发布到自有服务器 https://www.funbits.cn/，不再使用 GitHub Pages。合并到 `develop` 不会自动上线，每次都要按下面的流程手动部署一次。App Store 里填的隐私政策、用户协议地址都在 www.funbits.cn 上。
+官网只发布到自有服务器 https://guluclub.com/，不再使用 GitHub Pages。合并到 `develop` 不会自动上线，每次都要按下面的流程手动部署一次。App Store 里填的隐私政策、用户协议地址都在 guluclub.com 上。
 
 ## 一次更新的完整流程
 
 1. 在功能分支上改页面，本地用 `python3 -m http.server 8765` 预览。改了 `site.css` / `site.js` 的话，记得把所有页面里的 `?v=` 版本号加一。
 2. 提 PR 合并到 `develop`。
-3. 在本地切到最新的 `develop`，部署到 funbits.cn：
+3. 在本地切到最新的 `develop`，部署到 guluclub.com：
 
    ```sh
    git switch develop && git pull
@@ -29,7 +29,7 @@ cp scripts/deploy.env.example scripts/deploy.env
 ## 服务器结构
 
 - 每次发布是一个独立目录：`/var/www/funbits/releases/<时间戳>`（格式 `YYYYMMDD-HHMMSS`），里面的 `REVISION` 记录了对应的提交。旧目录不删，回滚就是切回旧目录。
-- www.funbits.cn 的 nginx 配置是 `/etc/nginx/conf.d/8bit-portal.conf`，官网和 3000 端口的 Next.js NES 游戏大厅共用这个域名：
+- guluclub.com 的 nginx 配置是 `/etc/nginx/conf.d/8bit-portal.conf`，官网和 3000 端口的 Next.js NES 游戏大厅共用这个域名：
   - 走官网目录：`/`、`/apps/`、`/assets/`、`/games/artofwar/`、`/favicon.ico`、`/site.webmanifest`
   - 旧链接 `games.html`、`apps.html` 301 跳回首页
   - 其余路径（包括 `/games`、`/games/<slug>`、`/guide`）都转给 NES 大厅
@@ -75,3 +75,14 @@ scripts/deploy-funbits.sh rollback 20261024-162000   # 切回指定 release
 nginx 只把上面列出的几个路径交给官网。在已有目录下加页面（比如 `apps/<新产品>/`）不需要改配置，部署后直接生效。
 
 如果新增了**新的顶层路径**，或者**新的游戏目录** `games/<新游戏>/`，需要先在 `8bit-portal.conf` 里给它加一段指向官网目录的 `location`，否则请求会落到 NES 大厅（`/games/<slug>` 本来就是 NES 大厅的路由）。加之前先确认 NES 大厅在这个路径上返回 404，不要抢掉它已有的页面。改完同样先备份、`nginx -t` 再 reload。这种情况下逐页校验会报「内容不一致」或非 200，可以当作提醒。
+
+## 换域名：www.funbits.cn → guluclub.com
+
+官网主域名改为 `guluclub.com`（已有 ICP 备案），`www.guluclub.com` 301 到主域。脚本的 `SITE_URL` 默认值已改成新域名，所以**要先把服务器切好，再用新脚本发布**，否则逐页校验会全部失败。脚本名、服务器目录 `/var/www/funbits` 和 nginx 配置文件名不变。
+
+1. DNS：`guluclub.com` 和 `www.guluclub.com` 的 A 记录指向服务器。
+2. 证书：给 `guluclub.com`、`www.guluclub.com` 申请证书，并加入自动续期。
+3. nginx：在 `8bit-portal.conf` 里把官网和 NES 大厅的 server 块改成 `server_name guluclub.com`，证书换成新域名的；新增 `www.guluclub.com` → `https://guluclub.com$request_uri` 的 301。
+4. 旧域名：`www.funbits.cn`（及 `funbits.cn`）整站 `301` 到 `https://guluclub.com$request_uri`，路径原样保留。App Store 里填的隐私政策、用户协议、技术支持链接靠这个继续可用，之后再逐个改成新地址。旧域名证书继续续期。
+5. `mahjong.funbits.cn` 不动。
+6. `nginx -t`、reload，然后 `scripts/deploy-funbits.sh verify` 用新域名逐页校验。

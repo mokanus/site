@@ -7,7 +7,7 @@
     "2": "眨右眼 + ω 笑（只改脸）",
     "3": "眯成 ^ ^ 大笑（只改脸）"
   },
-  "assets": "https://www.funbits.cn/assets/img/brand/character/kraft/cheer/",
+  "assets": "https://guluclub.com/assets/img/brand/character/kraft/cheer/",
   "intro": [
     { "frame": 0, "ms": 700, "fx": "breathe" },
     { "frame": 1, "ms": 900, "fx": "pop", "sparkles": true }

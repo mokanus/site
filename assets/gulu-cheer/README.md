@@ -1,6 +1,6 @@
 # 咕噜比耶动画（gulu-cheer）
 
-人形咕噜（牛皮纸剪纸风）在开通会员等“好消息”时刻出场的庆祝动画，放在官网上供各项目共用。演示页：https://www.funbits.cn/assets/gulu-cheer/
+人形咕噜（牛皮纸剪纸风）在开通会员等“好消息”时刻出场的庆祝动画，放在官网上供各项目共用。演示页：https://guluclub.com/assets/gulu-cheer/
 
 ## 帧图
 
@@ -24,7 +24,7 @@
 ## 网页里用
 
 ```html
-<script src="https://www.funbits.cn/assets/gulu-cheer/gulu-cheer.js" defer></script>
+<script src="https://guluclub.com/assets/gulu-cheer/gulu-cheer.js" defer></script>
 <gulu-cheer size="220"></gulu-cheer>
 ```
 
