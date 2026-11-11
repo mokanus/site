@@ -1,5 +1,5 @@
 // 咕噜比耶动画 <gulu-cheer>（无依赖，可跨项目引用）
-// 用法：<script src="https://www.funbits.cn/assets/gulu-cheer/gulu-cheer.js" defer> 再放 <gulu-cheer>（注释里不写闭合 script 标签，方便内联）
+// 用法：<script src="https://guluclub.com/assets/gulu-cheer/gulu-cheer.js" defer> 再放 <gulu-cheer>（注释里不写闭合 script 标签，方便内联）
 //       <gulu-cheer size="220"></gulu-cheer>
 // 属性：mode = breathe（默认，抱书→比耶播一遍，之后停在比耶轻轻呼吸）| full（之后继续眨眼/大笑循环）；
 //       size 边长 px（默认 200）；trigger = auto | visible | click | manual（默认 visible）；

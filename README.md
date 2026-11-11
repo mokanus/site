@@ -1,6 +1,6 @@
 # 咕噜公社官网
 
-糖光、咕噜账本、鹈鹕壁纸、战争艺术的产品官网，纯 HTML/CSS/JS，无构建步骤，部署在自有服务器 https://www.funbits.cn 上。
+糖光、咕噜账本、鹈鹕壁纸、战争艺术的产品官网，纯 HTML/CSS/JS，无构建步骤，部署在自有服务器 https://guluclub.com 上。
 
 ## 页面
 
@@ -15,9 +15,9 @@
 
 提交 App Store 时可填写的地址（战争艺术把路径里的 `apps` 换成 `games`）：
 
-- 隐私政策：`https://www.funbits.cn/apps/<产品>/privacy.html`
-- 用户协议（自定义 EULA）：`https://www.funbits.cn/apps/<产品>/terms.html`
-- 技术支持：`https://www.funbits.cn/apps/<产品>/#support`
+- 隐私政策：`https://guluclub.com/apps/<产品>/privacy.html`
+- 用户协议（自定义 EULA）：`https://guluclub.com/apps/<产品>/terms.html`
+- 技术支持：`https://guluclub.com/apps/<产品>/#support`
 
 ## 本地预览
 
@@ -29,7 +29,7 @@ python3 -m http.server 8765
 
 ## 发布
 
-官网只发布到 https://www.funbits.cn，不再使用 GitHub Pages。改动合并到 `develop` 后执行 `scripts/deploy-funbits.sh deploy` 上线，完整流程和回滚方法见 [docs/DEPLOY.md](docs/DEPLOY.md)。
+官网只发布到 https://guluclub.com，不再使用 GitHub Pages。改动合并到 `develop` 后执行 `scripts/deploy-funbits.sh deploy` 上线，完整流程和回滚方法见 [docs/DEPLOY.md](docs/DEPLOY.md)。
 
 ## 缓存
 

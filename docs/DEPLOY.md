@@ -1,12 +1,12 @@
 # 官网更新与部署流程
 
-官网只发布到自有服务器 https://www.funbits.cn/，不再使用 GitHub Pages。合并到 `develop` 不会自动上线，每次都要按下面的流程手动部署一次。App Store 里填的隐私政策、用户协议地址都在 www.funbits.cn 上。
+官网只发布到自有服务器 https://guluclub.com/，不再使用 GitHub Pages。合并到 `develop` 不会自动上线，每次都要按下面的流程手动部署一次。App Store 里填的隐私政策、用户协议地址都在 guluclub.com 上。
 
 ## 一次更新的完整流程
 
 1. 在功能分支上改页面，本地用 `python3 -m http.server 8765` 预览。改了 `site.css` / `site.js` 的话，记得把所有页面里的 `?v=` 版本号加一。
 2. 提 PR 合并到 `develop`。
-3. 在本地切到最新的 `develop`，部署到 funbits.cn：
+3. 在本地切到最新的 `develop`，部署到 guluclub.com：
 
    ```sh
    git switch develop && git pull
@@ -29,10 +29,11 @@ cp scripts/deploy.env.example scripts/deploy.env
 ## 服务器结构
 
 - 每次发布是一个独立目录：`/var/www/funbits/releases/<时间戳>`（格式 `YYYYMMDD-HHMMSS`），里面的 `REVISION` 记录了对应的提交。旧目录不删，回滚就是切回旧目录。
-- www.funbits.cn 的 nginx 配置是 `/etc/nginx/conf.d/8bit-portal.conf`，官网和 3000 端口的 Next.js NES 游戏大厅共用这个域名：
-  - 走官网目录：`/`、`/apps/`、`/assets/`、`/games/artofwar/`、`/favicon.ico`、`/site.webmanifest`
-  - 旧链接 `games.html`、`apps.html` 301 跳回首页
-  - 其余路径（包括 `/games`、`/games/<slug>`、`/guide`）都转给 NES 大厅
+- nginx 配置是 `/etc/nginx/conf.d/8bit-portal.conf`，里面有四个站点：
+  - `guluclub.com`：官网。走官网目录的有 `/`、`/apps/`、`/assets/`、`/games/artofwar/`、`/favicon.ico`、`/site.webmanifest`；`/games`、`/games/*`、`/guide` 301 到 `game.guluclub.com`；其他未知路径 404。release 路径只在这个 server 块里出现。
+  - `www.guluclub.com`：301 到 `guluclub.com`。
+  - `game.guluclub.com`：整站反代到 3000 端口的 Next.js NES 游戏大厅。
+  - `www.funbits.cn`（旧域名）：只做跳转。`/games*`、`/guide*`、`/_next*` 跳到 `game.guluclub.com`，其余（包括 `/games/artofwar/`）跳到 `guluclub.com` 同一路径，App Store 里填的旧链接靠它继续可用。
 - 长沙麻将在 `mahjong.funbits.cn` 和 IP 直连上，不在这个配置文件里，部署官网不会碰到它。
 
 ## 脚本做了什么
@@ -67,11 +68,15 @@ scripts/deploy-funbits.sh rollback 20261024-162000   # 切回指定 release
   ```
 
   2026-10-24 第一次接入官网之前的原始配置备份是 `8bit-portal.conf.bak-site-20261024`。
-- **某页显示「内容不一致」但返回 200**：通常是这个路径被 NES 大厅接走了，见下一节。
+- **某页返回 404 或 301**：通常是 nginx 还没给这个路径加 location，见下一节。
 - **想清理旧 release**：脚本不会自动删除。确认不再需要回滚后，在服务器上手动删除最早的几个 `releases/<时间戳>` 目录，至少保留线上在用的和它前一个。
 
 ## 新增页面时要注意
 
 nginx 只把上面列出的几个路径交给官网。在已有目录下加页面（比如 `apps/<新产品>/`）不需要改配置，部署后直接生效。
 
-如果新增了**新的顶层路径**，或者**新的游戏目录** `games/<新游戏>/`，需要先在 `8bit-portal.conf` 里给它加一段指向官网目录的 `location`，否则请求会落到 NES 大厅（`/games/<slug>` 本来就是 NES 大厅的路由）。加之前先确认 NES 大厅在这个路径上返回 404，不要抢掉它已有的页面。改完同样先备份、`nginx -t` 再 reload。这种情况下逐页校验会报「内容不一致」或非 200，可以当作提醒。
+如果新增了**新的顶层路径**，或者**新的游戏目录** `games/<新游戏>/`，需要先在 `8bit-portal.conf` 的 `guluclub.com` server 块里给它加一段指向官网目录的 `location`。否则顶层路径会 404，`/games/<slug>` 会被 301 到游戏大厅。旧域名 `www.funbits.cn` 的跳转规则也要对应补上（新游戏目录要跳到 `guluclub.com` 而不是 `game.guluclub.com`）。改完同样先备份、`nginx -t` 再 reload。逐页校验报非 200 可以当作提醒。
+
+## 换域名记录（2026-11-11）
+
+官网从 `www.funbits.cn` 换到 `guluclub.com`，NES 大厅换到 `game.guluclub.com`，旧域名整站 301。证书用 webroot 签发，由服务器上的 `/usr/local/sbin/shiguang-cert-renew` 每天统一续期（强制 IPv4，续完 reload nginx）。之后 App Store 里的隐私政策、用户协议、技术支持链接可以逐步改成 `https://guluclub.com/apps/<产品>/...`。

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# 把官网发布到 www.funbits.cn（阿里云 ECS），流程说明见 docs/DEPLOY.md。
+# 把官网发布到 guluclub.com（阿里云 ECS），流程说明见 docs/DEPLOY.md。
 #
 #   scripts/deploy-funbits.sh deploy [--dry-run]   打包 HEAD，上传新 release，切 nginx，逐页校验
 #   scripts/deploy-funbits.sh rollback [时间戳]     切回上一个（或指定的）release
@@ -15,7 +15,7 @@ ENV_FILE="$ROOT/scripts/deploy.env"
 
 : "${DEPLOY_HOST:?请在 scripts/deploy.env 里设置 DEPLOY_HOST，例如 root@<服务器IP>}"
 DEPLOY_SSH_KEY="${DEPLOY_SSH_KEY:-}"
-SITE_URL="${SITE_URL:-https://www.funbits.cn}"
+SITE_URL="${SITE_URL:-https://guluclub.com}"
 REMOTE_ROOT="${REMOTE_ROOT:-/var/www/funbits}"
 NGINX_CONF="${NGINX_CONF:-/etc/nginx/conf.d/8bit-portal.conf}"
 DEPLOY_BRANCH="${DEPLOY_BRANCH:-develop}"
@@ -60,7 +60,7 @@ systemctl reload nginx 2>/dev/null || nginx -s reload
 REMOTE
 }
 
-# 逐页校验：仓库里每个 html 都要 200 且内容和本地一致；NES 大厅和旧链接跳转保持原样
+# 逐页校验：仓库里每个 html 都要 200 且内容和本地一致；/games 跳到游戏大厅、旧链接跳转保持原样
 verify() {
   local dir="$1" fail=0 tmp code url path
   tmp="$(mktemp)"
@@ -71,12 +71,12 @@ verify() {
     if [ "$code" != 200 ]; then
       echo "  ✗ $code  $url"; fail=1
     elif [ "$(sha "$tmp")" != "$(sha "$dir/$path")" ]; then
-      echo "  ✗ 内容不一致  $url（可能被 NES 大厅接走了，见 docs/DEPLOY.md「新增页面」）"; fail=1
+      echo "  ✗ 内容不一致  $url（检查 nginx 里有没有为这个路径加 location，见 docs/DEPLOY.md）"; fail=1
     else
       echo "  ✓ 200  $url"
     fi
   done < <(cd "$dir" && find . -name '*.html' | sed 's#^\./##' | sort; printf '%s\n' assets/site.css assets/site.js favicon.ico site.webmanifest)
-  for pair in "/games 200" "/games.html 301" "/apps.html 301"; do
+  for pair in "/games 301" "/games.html 301" "/apps.html 301"; do
     url="$SITE_URL${pair% *}"
     code="$(curl -sS -o /dev/null -w '%{http_code}' "$url" || echo 000)"
     if [ "$code" = "${pair#* }" ]; then echo "  ✓ $code  $url"; else echo "  ✗ $code（应为 ${pair#* }）  $url"; fail=1; fi
