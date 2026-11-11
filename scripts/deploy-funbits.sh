@@ -60,7 +60,7 @@ systemctl reload nginx 2>/dev/null || nginx -s reload
 REMOTE
 }
 
-# 逐页校验：仓库里每个 html 都要 200 且内容和本地一致；NES 大厅和旧链接跳转保持原样
+# 逐页校验：仓库里每个 html 都要 200 且内容和本地一致；/games 跳到游戏大厅、旧链接跳转保持原样
 verify() {
   local dir="$1" fail=0 tmp code url path
   tmp="$(mktemp)"
@@ -71,12 +71,12 @@ verify() {
     if [ "$code" != 200 ]; then
       echo "  ✗ $code  $url"; fail=1
     elif [ "$(sha "$tmp")" != "$(sha "$dir/$path")" ]; then
-      echo "  ✗ 内容不一致  $url（可能被 NES 大厅接走了，见 docs/DEPLOY.md「新增页面」）"; fail=1
+      echo "  ✗ 内容不一致  $url（检查 nginx 里有没有为这个路径加 location，见 docs/DEPLOY.md）"; fail=1
     else
       echo "  ✓ 200  $url"
     fi
   done < <(cd "$dir" && find . -name '*.html' | sed 's#^\./##' | sort; printf '%s\n' assets/site.css assets/site.js favicon.ico site.webmanifest)
-  for pair in "/games 200" "/games.html 301" "/apps.html 301"; do
+  for pair in "/games 301" "/games.html 301" "/apps.html 301"; do
     url="$SITE_URL${pair% *}"
     code="$(curl -sS -o /dev/null -w '%{http_code}' "$url" || echo 000)"
     if [ "$code" = "${pair#* }" ]; then echo "  ✓ $code  $url"; else echo "  ✗ $code（应为 ${pair#* }）  $url"; fail=1; fi
